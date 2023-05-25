@@ -1,0 +1,131 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="rmii_clk" trig_type="0" storage_depth="512" window_num="1" capture_amount="512" trigger_pos="0" module_name="udp_loop" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.IDLE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.RX_SFD</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.MAC_DES</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.MAC_SRC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.TYPE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_TYPE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_OPCODE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_SRC_MAC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_SRC_IP</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_DES_MAC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_DES_IP</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_FILL</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.CRC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.IDLE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.TX_PACKAGE_HEAD</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.MAC_DES</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.MAC_SRC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.TYPE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_TYPE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_OPCODE</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_SRC_MAC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_SRC_IP</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_DES_MAC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_DES_IP</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.ARP_FILL</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/tx_state.CRC</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdv</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/arp_req</Signal>
+            <Signal>u1_eth_rmii/u2_eth_arp_gmii/arp_req_true</Signal>
+            <Bus name="u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[7:0]">
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[7]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[6]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[5]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[4]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[3]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[2]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[1]</Signal>
+                <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[0]</Signal>
+            </Bus>
+            <Signal>rmii_rxdv</Signal>
+            <Bus name="rmii_rxdata[1:0]">
+                <Signal>rmii_rxdata[1]</Signal>
+                <Signal>rmii_rxdata[0]</Signal>
+            </Bus>
+            <Signal>u1_eth_rmii/u1_rmii2gmii/rmii_true_rxdv</Signal>
+            <Bus name="u1_eth_rmii/u1_rmii2gmii/rx_data_cnt[1:0]">
+                <Signal>u1_eth_rmii/u1_rmii2gmii/rx_data_cnt[1]</Signal>
+                <Signal>u1_eth_rmii/u1_rmii2gmii/rx_data_cnt[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>udp_rxend</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1">
+                <SignalList>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.IDLE</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.RX_SFD</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.MAC_DES</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.MAC_SRC</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.TYPE</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_TYPE</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_OPCODE</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_SRC_MAC</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_SRC_IP</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_DES_MAC</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_DES_IP</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.ARP_FILL</Signal>
+                    <Signal>u1_eth_rmii/u2_eth_arp_gmii/rx_state.CRC</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="2">
+                <SignalList>
+                    <Bus restorename="u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[7:0]">
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[7]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[6]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[5]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[4]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[3]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[2]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[1]</Signal>
+                        <Signal>u1_eth_rmii/u2_eth_arp_gmii/gmii_rxdata[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="0" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="R" value1="0" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="0100000000000" value1="0000000000000" trigger="1"/>
+            <MatchUnit index="2" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="01010101" value1="00000000" trigger="2"/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M2</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1110001011000010</GAO_ID>
+</GAO_CONFIG>
