@@ -1,0 +1,151 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="u_ddr3_ctrl_top/ref_clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="rmii_bmp_hdmi" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.IDLE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.START_WAITE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_WR_CMD</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_RD_CMD</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.CYC_DONE_WAITE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wren</Signal>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_controller/cmd[2:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/cmd[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/cmd[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/cmd[0]</Signal>
+            </Bus>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/cmd_en</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_ack</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_valid</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_req</Signal>
+            <Signal>u_ddr3_ctrl_top/ddr3_rd_ack</Signal>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[17:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[17]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[16]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[15]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[14]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[13]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[12]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[11]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[10]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[9]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[8]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[7]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[6]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[5]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[4]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[3]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_addr[0]</Signal>
+            </Bus>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[15:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[15]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[14]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[13]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[12]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[11]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[10]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[9]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[8]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[7]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[6]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[5]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[4]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[3]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_dout[0]</Signal>
+            </Bus>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_DONE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/DATA_R_END</Signal>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_req</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1">
+                <SignalList>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_rd_req</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="2">
+                <SignalList>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_DONE</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="3">
+                <SignalList>
+                    <Bus restorename="u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11:0]">
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[10]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[9]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[8]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[7]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[6]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[5]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[4]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[3]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[2]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[1]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="4">
+                <SignalList>
+                    <Bus restorename="u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[11:0]">
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[11]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[10]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[9]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[8]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[7]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[6]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[5]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[4]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[3]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[2]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[1]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/RD_CYC_CNT[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="0" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="R" value1="0" trigger="0"/>
+            <MatchUnit index="1" enabled="1" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="R" value1="0" trigger="1"/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="2"/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="000000000000" value1="000000000000" trigger="3"/>
+            <MatchUnit index="4" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="000000000000" value1="000000000000" trigger="4"/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M1&amp;M4</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1101100101001101</GAO_ID>
+</GAO_CONFIG>

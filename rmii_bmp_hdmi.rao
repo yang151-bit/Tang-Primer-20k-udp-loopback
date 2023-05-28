@@ -1,0 +1,130 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="u_eth_rmii_read_photo/rmii_clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="rmii_bmp_hdmi" force_trigger_by_falling_edge="true">
+        <SignalList>
+            <Signal>u_eth_rmii_read_photo/header_crc_state.HEADER_CRC_IDLE</Signal>
+            <Signal>u_eth_rmii_read_photo/header_crc_state.HEADER_CRC_BM</Signal>
+            <Signal>u_eth_rmii_read_photo/header_crc_state.HEADER_CRC_COLS</Signal>
+            <Signal>u_eth_rmii_read_photo/header_crc_state.HEADER_CRC_ROWS</Signal>
+            <Bus name="u_eth_rmii_read_photo/udp_rxdata[7:0]">
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[7]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[6]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[5]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[4]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[3]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[2]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[1]</Signal>
+                <Signal>u_eth_rmii_read_photo/udp_rxdata[0]</Signal>
+            </Bus>
+            <Signal>u_eth_rmii_read_photo/read_valid</Signal>
+            <Bus name="u_eth_rmii_read_photo/pkt_cnt[8:0]">
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[8]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[7]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[6]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[5]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[4]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[3]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[2]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[1]</Signal>
+                <Signal>u_eth_rmii_read_photo/pkt_cnt[0]</Signal>
+            </Bus>
+            <Signal>u_eth_rmii_read_photo/header_flag</Signal>
+            <Signal>u_eth_rmii_read_photo/udp_rxstart</Signal>
+            <Signal>u_eth_rmii_read_photo/word_valid</Signal>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[15:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[15]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[14]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[13]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[12]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[11]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[10]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[9]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[8]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[7]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[6]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[5]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[4]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[3]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_din[0]</Signal>
+            </Bus>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_fifo_ctrl/wrf_wr_en</Signal>
+            <Bus name="u_eth_rmii_read_photo/word_cnt[8:0]">
+                <Signal>u_eth_rmii_read_photo/word_cnt[8]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[7]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[6]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[5]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[4]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[3]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[2]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[1]</Signal>
+                <Signal>u_eth_rmii_read_photo/word_cnt[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Bus restorename="u_eth_rmii_read_photo/pkt_cnt[8:0]">
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[8]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[7]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[6]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[5]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[4]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[3]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[2]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[1]</Signal>
+                        <Signal>u_eth_rmii_read_photo/pkt_cnt[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1">
+                <SignalList>
+                    <Signal>u_eth_rmii_read_photo/word_valid</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="2">
+                <SignalList>
+                    <Signal>u_eth_rmii_read_photo/udp_rxstart</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="001010001" value1="000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="0" value1="0" trigger="1"/>
+            <MatchUnit index="2" enabled="1" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="R" value1="0" trigger="2"/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M2</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>0010011101010000</GAO_ID>
+</GAO_CONFIG>

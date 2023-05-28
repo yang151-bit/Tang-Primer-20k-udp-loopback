@@ -1,0 +1,74 @@
+[
+ {
+  "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_syn_top.v",
+  "InstLine" : 3,
+  "InstName" : "ddr3_syn_top",
+  "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_syn_top.v",
+  "ModuleLine" : 3,
+  "ModuleName" : "ddr3_syn_top",
+  "SubInsts" : [
+   {
+    "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_syn_top.v",
+    "InstLine" : 75,
+    "InstName" : "test",
+    "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/tester.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "tester",
+    "SubInsts" : [
+     {
+      "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/print.v",
+      "InstLine" : 105,
+      "InstName" : "tx",
+      "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/uart_tx_V2.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "uart_tx_V2"
+     }
+    ]
+   },
+   {
+    "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_syn_top.v",
+    "InstLine" : 103,
+    "InstName" : "pll",
+    "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/gowin_rpll/gowin_rpll.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "Gowin_rPLL"
+   },
+   {
+    "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_syn_top.v",
+    "InstLine" : 113,
+    "InstName" : "u_ddr3",
+    "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_memory_interface/ddr3_memory_interface.v",
+    "ModuleLine" : 11484,
+    "ModuleName" : "DDR3_Memory_Interface_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_memory_interface/ddr3_memory_interface.v",
+      "InstLine" : 11569,
+      "InstName" : "gw3_top",
+      "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_memory_interface/ddr3_memory_interface.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "~GW_DDR3_PHY_MC.DDR3_Memory_Interface_Top"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/rdfifo.v",
+  "InstLine" : 977,
+  "InstName" : "rdfifo",
+  "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/rdfifo.v",
+  "ModuleLine" : 977,
+  "ModuleName" : "rdfifo",
+  "SubInsts" : [
+   {
+    "InstFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/rdfifo.v",
+    "InstLine" : 1002,
+    "InstName" : "fifo_inst",
+    "ModuleFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/rdfifo.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "~fifo.rdfifo"
+   }
+  ]
+ }
+]
