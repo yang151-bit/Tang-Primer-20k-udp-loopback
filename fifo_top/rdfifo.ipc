@@ -9,7 +9,7 @@ version=3.0
 [Config]
 ALEMPTY=0
 ALFULL=0
-ALFULL_SET=7
+ALFULL_SET=4
 COUNT_R=false
 COUNT_W=false
 DEPTH_R=6

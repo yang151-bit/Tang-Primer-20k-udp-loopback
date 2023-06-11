@@ -179,9 +179,20 @@ module rmii_bmp_hdmi(
 //时钟IP核
   Gowin_rPLL pll(
       .clkout(memory_clk), //output clkout
-      .lock(locked), //output lock
+      .lock(locked), //output locked
+      .clkoutd(rmii_mdc_2x), //output clkoutd
       .clkin(sys_clk) //input clkin
     );
+
+
+    CLKDIV u_clkdiv_rmii_mdc(
+        .RESETN     (rst_n      ),
+        .HCLKIN     (rmii_mdc_2x),      //clk  x2
+        .CLKOUT     (rmii_mdc   ),      //clk  x1
+        .CALIB      (1'b0       )
+    );
+    defparam u_clkdiv_rmii_mdc.DIV_MODE="2";
+    defparam u_clkdiv_rmii_mdc.GSREN="false";
 
 
 //读取UDP图片
@@ -191,7 +202,7 @@ module rmii_bmp_hdmi(
         .USB_PKT_NUM        (USB_PKT_NUM))
     u_eth_rmii_read_photo(
         .rmii_mdc      (rmii_mdc               ),
-        .mdc_locked    (locked_hdmi            ),
+        .mdc_locked    (locked                 ),
     	.rst_n         (rst_n & sys_init_done  ),
         .ddr3_wr_clk   (ddr3_wr_clk            ),
         .ddr3_wr_en    (vfb_de_in              ),
@@ -392,7 +403,6 @@ module rmii_bmp_hdmi(
     TMDS_PLL u_TMDS_PLL(
         .clkout(hdmi_clk_5), //output clkout
         .lock(locked_hdmi), //output lock
-        .clkoutd(rmii_mdc), //output clkoutd
         .clkin(sys_clk) //input clkin
     );
 

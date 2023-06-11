@@ -55,10 +55,13 @@ module ddr3_controller #(
     reg                             RD_DONE;
     reg                             DATA_W_END;
     reg                             DATA_R_END;
+    reg                             rd_ack_flag;
+    reg                             ddr3_rd_req_r1;
                                         
 //wire define                            
     wire  [2:0]                     addr_sel;
     wire  [2:0]                     cmd_sel;
+    wire                            ddr3_rd_req_ris;
 //=====test state machine=====
 
     localparam  IDLE                = 5'b00001;
@@ -96,7 +99,7 @@ module ddr3_controller #(
             START_WAITE: 
                 if(ddr3_wr_req && cmd_rdy && ddr3_wr_rdy)
                     next_state = EXEC_WR_CMD;
-                else if(ddr3_rd_req && cmd_rdy && ~ddr3_rd_load)
+                else if(rd_ack_flag && cmd_rdy && ~ddr3_rd_load)
                     next_state = EXEC_RD_CMD;
 
             EXEC_WR_CMD:
@@ -175,7 +178,7 @@ module ddr3_controller #(
           WR_DONE <= WR_DONE;
 
     always@(posedge clk_ref)
-        if((WR_CNT == Burst_Num-2) || (WR_DONE && (WR_CNT == TCMD_2-2)))
+        if(WR_CNT == Burst_Num-2)
             DATA_W_END <= 1'b1;
         else 
             DATA_W_END <= 1'b0;
@@ -192,9 +195,22 @@ module ddr3_controller #(
     assign ddr3_wr_data = ddr3_din;
     
 //=====BURST READ =====
-  
+    
     always@(posedge clk_ref)
-        if(ddr3_rd_valid)
+        ddr3_rd_req_r1 <= ddr3_rd_req;
+
+    assign ddr3_rd_req_ris = ~ddr3_rd_req_r1 & ddr3_rd_req;
+
+    always@(posedge clk_ref or negedge rst_n)
+        if(!rst_n)
+            rd_ack_flag <= 0;
+        else if(ddr3_rd_req_ris & ~rd_ack_flag)
+            rd_ack_flag <= 1;
+        else if(DATA_R_END)
+            rd_ack_flag <= 0;
+
+    always@(posedge clk_ref)
+        if(curr_state == EXEC_RD_CMD)
             RD_CNT <= RD_CNT + 1'b1;
         else
             RD_CNT <= 0;
@@ -218,17 +234,13 @@ module ddr3_controller #(
             RD_DONE <= RD_DONE;
          
 
-    always@(posedge clk_ref or negedge rst_n)
-        if(!rst_n)
-            DATA_R_END <= 'd0;
-        else if(~ddr3_rd_valid)
-            DATA_R_END <= 1'b0;
-        else if((RD_CNT == Burst_Num-1) || (RD_DONE && (RD_CNT == TCMD_2-1)))
+    always@(posedge clk_ref)
+        if(RD_CNT == Burst_Num-2)
             DATA_R_END <= 1'b1;
         else
-            DATA_R_END <= DATA_R_END;
+            DATA_R_END <= 0;
 
-    assign ddr3_rd_ack = ddr3_rd_valid && ~DATA_R_END;
+    assign ddr3_rd_ack = ddr3_rd_valid;
     // assign ddr3_dout = 128'hffffffffffffffffffffffffffffffff;
     // assign ddr3_dout = {ddr3_rd_data[15:0], ddr3_rd_data[31:16], ddr3_rd_data[47:32], ddr3_rd_data[63:48],
     //                     ddr3_rd_data[79:64], ddr3_rd_data[95:80], ddr3_rd_data[111:96], ddr3_rd_data[127:112]};
