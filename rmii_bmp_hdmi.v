@@ -244,7 +244,7 @@ module rmii_bmp_hdmi(
       .memory_clk           (memory_clk),
       .pll_lock             (locked),
       .rst_n                (rst_n),   //rst_n
-      .app_burst_number     (6'd7),
+      .app_burst_number     (ddr3_burst_number),
       .cmd_ready            (ddr3_cmd_rdy),
       .cmd                  (ddr3_cmd),
       .cmd_en               (ddr3_cmd_en),
@@ -294,7 +294,7 @@ module rmii_bmp_hdmi(
         .BURST_LEN              (BURST_LEN          ))
     u_ddr3_ctrl_top(
         .ref_clk                (memory_clk_div4),
-        .rst_n                  (rst_n & locked_hdmi),
+        .rst_n                  (rst_n),
         .wr_clk                 (ddr3_wr_clk),
         .wr_en                  (vfb_de_in),
         .wr_load                (vfb_vs), 
@@ -315,6 +315,7 @@ module rmii_bmp_hdmi(
         .ddr3_wr_rdy            (ddr3_wr_rdy    ),
         .ddr3_wren              (ddr3_wren      ),
         .ddr3_wr_end            (ddr3_data_end  ),
+        .ddr3_burst_number      (ddr3_burst_number),
         .ddr3_rd_data           (ddr3_rdata     ),
         .ddr3_rd_valid          (ddr3_rd_valid  )
     );

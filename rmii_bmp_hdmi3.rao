@@ -1,0 +1,103 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="u_ddr3_ctrl_top/u_ddr3_controller/clk_ref" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="rmii_bmp_hdmi" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[7:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[7]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[6]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[5]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[4]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[3]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/ddr3_wr_data[0]</Signal>
+            </Bus>
+            <Bus name="u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11:0]">
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[10]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[9]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[8]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[7]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[6]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[5]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[4]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[3]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[2]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[1]</Signal>
+                <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[0]</Signal>
+            </Bus>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.IDLE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.START_WAITE</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_WR_CMD</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_RD_CMD</Signal>
+            <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.CYC_DONE_WAITE</Signal>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Bus restorename="u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11:0]">
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[11]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[10]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[9]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[8]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[7]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[6]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[5]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[4]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[3]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[2]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[1]</Signal>
+                        <Signal>u_ddr3_ctrl_top/u_ddr3_controller/WR_CYC_CNT[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1">
+                <SignalList>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.IDLE</Signal>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.START_WAITE</Signal>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_WR_CMD</Signal>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.EXEC_RD_CMD</Signal>
+                    <Signal>u_ddr3_ctrl_top/u_ddr3_controller/curr_state.CYC_DONE_WAITE</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="000000000000" value1="000000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00100" value1="00000" trigger="1"/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0&amp;M1</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>0110000111010101</GAO_ID>
+</GAO_CONFIG>

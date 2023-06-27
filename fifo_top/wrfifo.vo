@@ -1,8 +1,8 @@
 //Copyright (C)2014-2022 Gowin Semiconductor Corporation.
 //All rights reserved.
 //File Title: Post-PnR Simulation Model file
-//GOWIN Version: V1.9.8.09
-//Created Time: Sat May 27 12:11:12 2023
+//GOWIN Version: V1.9.8.08
+//Created Time: Tue Jun 27 17:48:36 2023
 
 `timescale 100 ps/100 ps
 module wrfifo(
@@ -426,7 +426,7 @@ defparam \fifo_inst/wfull_val_s4 .INIT=16'hE11E;
 LUT4 \fifo_inst/arempty_val_s1  (
 	.I0(\fifo_inst/rcnt_sub [0]),
 	.I1(\fifo_inst/rcnt_sub [1]),
-	.I2(\fifo_inst/rcnt_sub [2]),
+	.I2(\fifo_inst/rcnt_sub [3]),
 	.I3(RdEn),
 	.F(\fifo_inst/arempty_val_4 )
 );
@@ -557,11 +557,11 @@ LUT3 \fifo_inst/rbin_num_next_0_s4  (
 defparam \fifo_inst/rbin_num_next_0_s4 .INIT=8'h9A;
 LUT3 \fifo_inst/arempty_val_s2  (
 	.I0(\fifo_inst/arempty_val_10 ),
-	.I1(\fifo_inst/arempty_val_4 ),
-	.I2(\fifo_inst/rcnt_sub [3]),
+	.I1(\fifo_inst/rcnt_sub [2]),
+	.I2(\fifo_inst/arempty_val_4 ),
 	.F(\fifo_inst/arempty_val )
 );
-defparam \fifo_inst/arempty_val_s2 .INIT=8'h45;
+defparam \fifo_inst/arempty_val_s2 .INIT=8'hBA;
 LUT3 \fifo_inst/rempty_val_s1  (
 	.I0(\fifo_inst/rbin_num_next [4]),
 	.I1(\fifo_inst/Big.rq2_wptr [4]),
@@ -576,7 +576,7 @@ LUT4 \fifo_inst/arempty_val_s4  (
 	.I3(\fifo_inst/rcnt_sub_3_3 ),
 	.F(\fifo_inst/arempty_val_10 )
 );
-defparam \fifo_inst/arempty_val_s4 .INIT=16'h9669;
+defparam \fifo_inst/arempty_val_s4 .INIT=16'h6996;
 LUT4 \fifo_inst/Big.wgraynext_2_s2  (
 	.I0(\fifo_inst/Big.wbin [5]),
 	.I1(\fifo_inst/Big.wbin_num_next_4_10 ),

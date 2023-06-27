@@ -31,6 +31,7 @@ module ddr3_ctrl_top #(
             input                       cmd_rdy,
             output [2:0]                cmd,
             output                      cmd_en,
+            output  [5:0]               ddr3_burst_number,
             output [ADDR_WIDTH-1:0]     addr,
             output [8*DQ_WIDTH-1:0]     ddr3_wr_data, 
             output                      ddr3_wren, 
@@ -150,6 +151,7 @@ module ddr3_ctrl_top #(
         //ddr3 芯片接口
         .ddr3_rd_data      (ddr3_rd_data),
         .ddr3_rd_valid     (ddr3_rd_valid),
+        .ddr3_burst_number (ddr3_burst_number),
         .ddr3_wr_rdy       (ddr3_wr_rdy    ),
         .ddr3_wren         (ddr3_wren      ),
         .ddr3_wr_end       (ddr3_wr_end  ),

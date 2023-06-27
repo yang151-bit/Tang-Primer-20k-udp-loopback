@@ -51,7 +51,7 @@ module ddr3_fifo_ctrl #(
 //例化写端口FIFO    
 	wrfifo u_wrfifo(
 		.Data           (wrf_din),          //input [15:0] Data
-		.Reset          (~rst_n || wr_load),           //input Reset
+		.Reset          (wr_load),           //input Reset
 		.WrClk          (wclk),             //input WrClk
 		.RdClk          (clk_ref),          //input RdClk
 		.WrEn           (wrf_wr_en),        //input WrEn
@@ -63,7 +63,7 @@ module ddr3_fifo_ctrl #(
 //例化读端口FIFO
 	rdfifo u_rdfifo(
 		.Data           (ddr3_dout),       //input [127:0] Data
-		.Reset          (~rst_n || rd_load),           //input Reset
+		.Reset          (rd_load),           //input Reset
 		.WrClk          (clk_ref),          //input WrClk
 		.RdClk          (rclk),             //input RdClk
 		.WrEn           (ddr3_rd_ack),     //input WrEn

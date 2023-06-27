@@ -66,19 +66,19 @@ rmii2gmii								u1_rmii2gmii (
 	.gmii_txbusy						( gmii_txbusy		)
 );
 
-eth_arp_gmii							u2_eth_arp_gmii (
-	.sys_clk							( gmii_clk			),
-	.sys_rst_n							( sys_rst_n			),
-	.gmii_rxdv							( gmii_rxdv			),
-	.gmii_rxdata						( gmii_rxdata		),
-	.gmii_txbusy						( gmii_txbusy		),
-	.gmii_txen							( arp_gmii_txen		),
-	.gmii_txdata						( arp_gmii_txdata	),
-	.arp_working						( arp_working		),
-	.pc_refresh							( arp_pc_refresh	),
-	.pc_mac_addr						( arp_pc_mac		),
-	.pc_ip_addr							( arp_pc_ip			)
-);
+// eth_arp_gmii							u2_eth_arp_gmii (
+// 	.sys_clk							( gmii_clk			),
+// 	.sys_rst_n							( sys_rst_n			),
+// 	.gmii_rxdv							( gmii_rxdv			),
+// 	.gmii_rxdata						( gmii_rxdata		),
+// 	.gmii_txbusy						( gmii_txbusy		),
+// 	.gmii_txen							( arp_gmii_txen		),
+// 	.gmii_txdata						( arp_gmii_txdata	),
+// 	.arp_working						( arp_working		),
+// 	.pc_refresh							( arp_pc_refresh	),
+// 	.pc_mac_addr						( arp_pc_mac		),
+// 	.pc_ip_addr							( arp_pc_ip			)
+// );
 
 udp_gmii_rx								u3_udp_gmii_rx (
 	.sys_clk							( gmii_clk			),
@@ -97,26 +97,26 @@ udp_gmii_rx								u3_udp_gmii_rx (
 	.board_port							( board_port		)
 );
 
-udp_gmii_tx								u4_udp_gmii_tx (
-	.sys_clk							( gmii_clk			),
-	.sys_rst_n							( sys_rst_n			),
-	.gmii_txbusy						( gmii_txbusy		),
-	.gmii_txen							( udp_gmii_txen		),
-	.gmii_txdata						( udp_gmii_txdata	),
-	.udp_txstart						( udp_txstart		),
-	.udp_txamount						( udp_txamount		),
-	.udp_txdata							( udp_txdata		),
-	.udp_txreq							( udp_txreq			),
-	.udp_txbusy							( udp_txbusy		),
-	.pc_mac_addr						( pc_mac_addr		),
-	.pc_ip_addr							( pc_ip_addr		),
-	.pc_port							( pc_port			),
-	.board_port							( board_port		)
-);
+// udp_gmii_tx								u4_udp_gmii_tx (
+// 	.sys_clk							( gmii_clk			),
+// 	.sys_rst_n							( sys_rst_n			),
+// 	.gmii_txbusy						( gmii_txbusy		),
+// 	.gmii_txen							( udp_gmii_txen		),
+// 	.gmii_txdata						( udp_gmii_txdata	),
+// 	.udp_txstart						( udp_txstart		),
+// 	.udp_txamount						( udp_txamount		),
+// 	.udp_txdata							( udp_txdata		),
+// 	.udp_txreq							( udp_txreq			),
+// 	.udp_txbusy							( udp_txbusy		),
+// 	.pc_mac_addr						( pc_mac_addr		),
+// 	.pc_ip_addr							( pc_ip_addr		),
+// 	.pc_port							( pc_port			),
+// 	.board_port							( board_port		)
+// );
 
-assign		gmii_txdata		=	arp_working ? arp_gmii_txdata :
-								udp_txbusy ? udp_gmii_txdata : 8'h0;
-assign		gmii_txen		=	arp_working ? arp_gmii_txen :
-								udp_txbusy ? udp_gmii_txen : 1'b0;		
+// assign		gmii_txdata		=	arp_working ? arp_gmii_txdata :
+// 								udp_txbusy ? udp_gmii_txdata : 8'h0;
+// assign		gmii_txen		=	arp_working ? arp_gmii_txen :
+// 								udp_txbusy ? udp_gmii_txen : 1'b0;		
 
 endmodule
