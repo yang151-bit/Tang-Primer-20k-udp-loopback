@@ -17,6 +17,7 @@ module ddr3_fifo_ctrl #(
         input                           rdf_rd_en,              //读端口FIFO: 读使能
         input                           rd_load,                //读端口复位: 清空读FIFO 
         output      [DATA_WD-1:0]       rdf_dout,               //读端口FIFO: 读数据
+        output                          rd_rdy,
 
         //PSRAM 芯片端口
         input                           ddr3_init_done,        //PSRAM 初始化完成标志

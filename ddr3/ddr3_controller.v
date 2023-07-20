@@ -36,6 +36,26 @@ module ddr3_controller #(
         output reg  [ADDR_WIDTH-1:0]    addr,
         output      [8*DQ_WIDTH-1:0]    ddr3_wr_data
         );
+
+//=====test state machine=====
+
+    localparam  IDLE                = 5'b00001;
+    localparam  START_WAITE         = 5'b00010;
+    localparam  EXEC_WR_CMD         = 5'b00100;
+    localparam  EXEC_RD_CMD         = 5'b01000;
+    localparam  CYC_DONE_WAITE      = 5'b10000;
+
+    localparam  Burst_Num           = BURST_LEN/8;  // burst 128 = 6'd16;
+                                                    // burst 64  = 6'd8;
+                                                    // burst 32  = 6'd4;
+                                                    // burst 16  = 6'd2;
+    localparam  ADDR_RANGE          = MAX_ADDR/BURST_LEN;
+    localparam  RANGE_WD            = $clog2(ADDR_RANGE);
+    localparam  ADDR_WD             = $clog2(MAX_ADDR);
+
+    localparam  WR_CMD              = 3'h0;
+    localparam  RD_CMD              = 3'h1;
+
 //reg define
     reg [ADDR_WD-1:0] ddr3_wr_addr;
     reg [ADDR_WD-1:0] ddr3_rd_addr;
@@ -63,24 +83,7 @@ module ddr3_controller #(
     wire  [2:0]                     addr_sel;
     wire  [2:0]                     cmd_sel;
     wire                            ddr3_rd_req_fal;
-//=====test state machine=====
 
-    localparam  IDLE                = 5'b00001;
-    localparam  START_WAITE         = 5'b00010;
-    localparam  EXEC_WR_CMD         = 5'b00100;
-    localparam  EXEC_RD_CMD         = 5'b01000;
-    localparam  CYC_DONE_WAITE      = 5'b10000;
-
-    localparam  Burst_Num           = BURST_LEN/8;  // burst 128 = 6'd16;
-                                                    // burst 64  = 6'd8;
-                                                    // burst 32  = 6'd4;
-                                                    // burst 16  = 6'd2;
-    localparam  ADDR_RANGE          = MAX_ADDR/BURST_LEN;
-    localparam  RANGE_WD            = $clog2(ADDR_RANGE);
-    localparam  ADDR_WD             = $clog2(MAX_ADDR);
-
-    localparam WR_CMD = 3'h0;
-    localparam RD_CMD = 3'h1;
     
     always@(posedge clk_ref or negedge rst_n)
         if(!rst_n)
