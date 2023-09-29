@@ -105,6 +105,7 @@ reg [15:0] byte_cnt;
 reg [11:0] color_cnt;
 reg [31:0] expectPixels;
 reg frame_valid;
+reg init_flag;
 reg [7:0] dout;
 reg       dval;
 reg [15:0] sof_cnt;
@@ -140,6 +141,10 @@ always @(posedge CLK_I or posedge RST_I) begin
                 end
                 if(byte_cnt == 16'd11)
                     pixel_rd_en <= 1;
+                if(init_flag == 0 && byte_cnt == 16'd10)begin
+                    init_flag <= 1;
+                    pixel_rd_en <= 1;
+                end
                 
                 case (byte_cnt)
                     16'd0 : dout <= HERADER_LEN;
@@ -273,6 +278,7 @@ always @(posedge CLK_I or posedge RST_I) begin
                     color_cnt <= color_cnt + 12'd4;
                 end
                 frame_valid <= 1'b1;
+                init_flag <= 0;
                 pixel_rd_en <= 0;
                 pts_reg <= pts;
                 sofCounts_reg <= sofCounts;

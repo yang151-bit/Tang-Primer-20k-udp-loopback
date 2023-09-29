@@ -58,12 +58,12 @@
 /* USB Video resolution */
 `define BITS_PER_PIXEL  16
 `define WIDTH           480
-`define HEIGHT          320
+`define HEIGHT          361
 
 /* Frame rate */
 //`define FPS  78
-`define FPS  20
-`define FPS_MAX  78
+`define FPS  30
+`define FPS_MAX  60
 `define FPS_MIN  1
 
 `define MAX_FRAME_SIZE (`WIDTH * `HEIGHT * `BITS_PER_PIXEL / 8)

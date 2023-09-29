@@ -638,14 +638,14 @@ always @(posedge PHY_CLKOUT,posedge RESET_IN) begin
         bmHint                   <= 0;
         bFormatIndex             <= 8'h01;
         bFrameIndex              <= 8'h01;
-        dwFrameInterval          <= 333333;//`FRAME_INTERVAL;
+        dwFrameInterval          <= `FRAME_INTERVAL;//`FRAME_INTERVAL;
         wKeyFrameRate            <= 0;
         wPFrameRate              <= 0;
         wCompQuality             <= 0;
         wCompWindowSize          <= 0;
         wDelay                   <= 0;
         dwMaxVideoFrameSize      <= `MAX_FRAME_SIZE;
-        dwMaxPayloadTransferSize <= 32'd1024;//`PAYLOAD_SIZE;
+        dwMaxPayloadTransferSize <= `PAYLOAD_SIZE;//`PAYLOAD_SIZE;
         dwClockFrequency         <= 60000000;
         bmFramingInfo            <= 0;
         bPreferedVersion         <= 0;
