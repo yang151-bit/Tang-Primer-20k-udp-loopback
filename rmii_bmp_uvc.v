@@ -64,15 +64,25 @@ module rmii_bmp_uvc(
     );
 
 //parameter define 
-//PSDRAM读写最大地址 480 * 360 = 172800
-    localparam  HPRAM_MAX_ADDR = 172800;
+//DRAM读写最大地址 480 * 360 * 2 = 172800
+    localparam  DRAM_MAX_ADDR   = 172800;
+    localparam  ADDR_WIDTH      = $clog2(DRAM_MAX_ADDR);
 //USB分包数 360 + 1 = 361
     localparam  USB_PKT_NUM = 361;  
 //DRAM parameters
-    localparam  DQ_WIDTH = 16;
-    localparam  DATA_WD = 16;
-    localparam  ADDR_WIDTH = 27;
-    localparam  BURST_LEN = 64;
+    localparam  DQ_WIDTH        = 5'h16;
+    localparam  DDR_ADDR_WIDTH  = 27;
+    localparam  BANK_WIDTH      = 3;
+    localparam  ROW_WIDTH       = 14;
+    localparam  COL_WIDTH       = 10;
+    localparam  DM_WIDTH        = 2;
+    localparam  DQS_WIDTH       = 2;
+    localparam  AXI_ADDR_WIDTH  = 32;
+    localparam  AXI_ID_WIDTH    = 1;
+    localparam  AXI_BURST_WIDTH = 6;
+    localparam  AXI_DATA_WIDTH  = 128;
+    localparam  AXI_STRB_WIDTH  = AXI_DATA_WIDTH >> 3;
+    localparam  DATA_WD         = 16;
 
 //read mode define
     localparam  RD_PIC0         = 2'b00;
@@ -109,10 +119,9 @@ module rmii_bmp_uvc(
     wire                        syn_off0_hs;
                         
     wire                        off0_syn_de  ;
-    reg [7:0]   off0_syn_data;
+    reg [7:0]                   off0_syn_data;
     
 
-    wire                    memory_clk_div4;
     wire                    ddr3_init_done;
 
     //yuv data
@@ -217,104 +226,163 @@ module rmii_bmp_uvc(
 
 //DDR3
 
-  wire [27-1:0]             ddr3_addr;        //ADDR_WIDTH=27
+    wire                                aclk;        
+    wire                                aresetn;
 
-  wire                      ddr3_cmd_en;
-  wire [2:0]                ddr3_cmd;
-  wire                      ddr3_cmd_rdy;
+    wire  [AXI_ADDR_WIDTH-1 : 0]        ddr_awaddr;    
+    wire  [AXI_ID_WIDTH-1 : 0]          ddr_awid;        
+    wire  [AXI_BURST_WIDTH-1 : 0]       ddr_awlen;       
+    wire                                ddr_awvalid;     
+    wire                                ddr_awready;
 
-  wire                      ddr3_wren;
-  wire                      ddr3_data_end;
-  wire [128-1:0]            ddr3_wdata;    //APP_DATA_WIDTH=128
-  wire                      ddr3_wr_rdy;
+    wire  [AXI_DATA_WIDTH - 1 : 0]      ddr_wdata;       
+    wire  [AXI_STRB_WIDTH - 1 : 0]      ddr_wstrb;       
+    wire                                ddr_wlast;       
+    wire                                ddr_wvalid;      
+    wire                                ddr_wready;
 
-  wire                      ddr3_rd_valid;
-  wire                      ddr3_rdata_end;
-  wire [128-1:0]            ddr3_rdata;     //APP_DATA_WIDTH=128
+    wire  [AXI_ID_WIDTH - 1 : 0]        ddr_bid;         
+    wire  [1 : 0]                       ddr_bresp;       
+    wire                                ddr_bvalid;      
+    wire                                ddr_bready;
 
-  wire [5:0]                ddr3_burst_number;
+    wire  [AXI_ID_WIDTH - 1 : 0]        ddr_arid;        
+    wire  [AXI_ADDR_WIDTH - 1 : 0]      ddr_araddr;      
+    wire  [AXI_BURST_WIDTH-1 : 0]       ddr_arlen;       
+    wire                                ddr_arvalid;     
+    wire                                ddr_arready;
 
-  //ddr3_memory_top u_ddr3 (
-  DDR3_Memory_Interface_Top u_ddr3 (
-      .clk                  (sys_clk),
-      .memory_clk           (memory_clk),
-      .pll_lock             (locked),
-      .rst_n                (rst_n),   //rst_n
-      .app_burst_number     (ddr3_burst_number),
-      .cmd_ready            (ddr3_cmd_rdy),
-      .cmd                  (ddr3_cmd),
-      .cmd_en               (ddr3_cmd_en),
-      .addr                 ({1'b0,ddr3_addr}),//IDK why Gowin Set the addr width to 28. But it should be 27
-      .wr_data_rdy          (ddr3_wr_rdy),
-      .wr_data              (ddr3_wdata),
-      .wr_data_en           (ddr3_wren),
-      .wr_data_end          (ddr3_data_end),
-      .wr_data_mask         (16'h0000),
-      .rd_data              (ddr3_rdata),
-      .rd_data_valid        (ddr3_rd_valid),
-      .rd_data_end          (ddr3_rdata_end),
-      .sr_req               (1'b0),
-      .ref_req              (1'b0),
-      .sr_ack               (),
-      .ref_ack              (),
-      .init_calib_complete  (ddr3_init_done),
-      .clk_out              (memory_clk_div4),
-      .burst                (1'b1),
+    wire  [AXI_ID_WIDTH - 1 : 0]        ddr_rid;         
+    wire  [AXI_DATA_WIDTH - 1 : 0]      ddr_rdata;       
+    wire  [1 : 0]                       ddr_rresp;       
+    wire                                ddr_rvalid;      
+    wire                                ddr_rready;      
+    wire                                ddr_rlast; 
 
-      // mem interface
-      .ddr_rst         (),
-      .O_ddr_addr      (ddr_addr),
-      .O_ddr_ba        (ddr_bank),
-      .O_ddr_cs_n      (ddr_cs1),
-      .O_ddr_ras_n     (ddr_ras),
-      .O_ddr_cas_n     (ddr_cas),
-      .O_ddr_we_n      (ddr_we),
-      .O_ddr_clk       (ddr_ck),
-      .O_ddr_clk_n     (ddr_ck_n),
-      .O_ddr_cke       (ddr_cke),
-      .O_ddr_odt       (ddr_odt),
-      .O_ddr_reset_n   (ddr_reset_n),
-      .O_ddr_dqm       (ddr_dm),
-      .IO_ddr_dq       (ddr_dq),
-      .IO_ddr_dqs      (ddr_dqs),
-      .IO_ddr_dqs_n    (ddr_dqs_n)
+//axi ddr
+    axi_ddr3 
+    #(
+        .AXI_ADDR_WIDTH     (AXI_ADDR_WIDTH     ),
+        .AXI_DATA_WIDTH     (AXI_DATA_WIDTH     ),
+        .AXI_ID_WIDTH       (AXI_ID_WIDTH       ),
+        .AXI_BURST_WIDTH    (AXI_BURST_WIDTH    ),
+        .BANK_WIDTH         (BANK_WIDTH         ), 
+        .ROW_WIDTH          (ROW_WIDTH          ), 
+        .COL_WIDTH          (COL_WIDTH          ), 
+        .DQ_WIDTH           (DQ_WIDTH           ), 
+        .DM_WIDTH           (DM_WIDTH           ), 
+        .DQS_WIDTH          (DQS_WIDTH          )
+    )   
+    u_axi_ddr3( 
+    	.aclk               (aclk               ),
+        .aresetn            (aresetn            ),
+        .awaddr             (ddr_awaddr         ),
+        .awid               (ddr_awid           ),
+        .awlen              (ddr_awlen          ),
+        .awvalid            (ddr_awvalid        ),
+        .awready            (ddr_awready        ),
+        .wdata              (ddr_wdata          ),
+        .wstrb              (ddr_wstrb          ),
+        .wlast              (ddr_wlast          ),
+        .wvalid             (ddr_wvalid         ),
+        .wready             (ddr_wready         ),
+        .bid                (ddr_bid            ),
+        .bresp              (ddr_bresp          ),
+        .bvalid             (ddr_bvalid         ),
+        .bready             (ddr_bready         ),
+        .arid               (ddr_arid           ),
+        .araddr             (ddr_araddr         ),
+        .arlen              (ddr_arlen          ),
+        .arvalid            (ddr_arvalid        ),
+        .arready            (ddr_arready        ),
+        .rid                (ddr_rid            ),
+        .rdata              (ddr_rdata          ),
+        .rresp              (ddr_rresp          ),
+        .rvalid             (ddr_rvalid         ),
+        .rready             (ddr_rready         ),
+        .rlast              (ddr_rlast          ),
+    
+        .sys_clk            (sys_clk            ),
+        .m_rstn             (rst_n              ),
+        .m_clk              (memory_clk         ),
+        .m_clk_locked       (locked             ),
+        .clk_ref            (aclk               ),
+    
+        .ddr_init_done      (ddr3_init_done     ),
+        .ddr_addr           (ddr_addr           ),
+        .ddr_bank           (ddr_bank           ),
+        .ddr_cs             (ddr_cs             ),
+        .ddr_ras            (ddr_ras            ),
+        .ddr_cas            (ddr_cas            ),
+        .ddr_we             (ddr_we             ),
+        .ddr_ck             (ddr_ck             ),
+        .ddr_ck_n           (ddr_ck_n           ),
+        .ddr_cke            (ddr_cke            ),
+        .ddr_odt            (ddr_odt            ),
+        .ddr_reset_n        (ddr_reset_n        ),
+        .ddr_dm             (ddr_dm             ),
+        .ddr_dq             (ddr_dq             ),
+        .ddr_dqs            (ddr_dqs            ),
+        .ddr_dqs_n          (ddr_dqs_n          )
     );
 
     assign ddr_cs = 1'b0;
+
+    assign aresetn = rst_n;
     
-    ddr3_ctrl_top #(
-        .DATA_WD                (DATA_WD            ),
-        .DQ_WIDTH               (DQ_WIDTH           ),       
-        .ADDR_WIDTH             (ADDR_WIDTH         ),
-        .MAX_ADDR               (HPRAM_MAX_ADDR     ),
-        .BURST_LEN              (BURST_LEN          ))
-    u_ddr3_ctrl_top(
-        .ref_clk                (memory_clk_div4),
-        .rst_n                  (rst_n),
-        .wr_clk                 (ddr3_wr_clk),
-        .wr_en                  (vfb_de_in),
-        .wr_load                (vfb_vs), 
-        .wr_data                (vfb_data_in),
-        .rd_clk                 (~ulpi_clk),
-        .rd_en                  (syn_off0_re),  
-        .rd_load                (~syn_off0_vs),
-        .rd_data                (vfb_data_out),
-        .rd_valid               (vfb_rd_valid),
-        
-        // mem interface
-        .init_done              (ddr3_init_done ),
-        .cmd                    (ddr3_cmd       ),
-        .cmd_en                 (ddr3_cmd_en    ),
-        .cmd_rdy                (ddr3_cmd_rdy   ),
-        .addr                   (ddr3_addr      ),
-        .ddr3_wr_data           (ddr3_wdata     ),
-        .ddr3_wr_rdy            (ddr3_wr_rdy    ),
-        .ddr3_wren              (ddr3_wren      ),
-        .ddr3_wr_end            (ddr3_data_end  ),
-        .ddr3_burst_number      (ddr3_burst_number),
-        .ddr3_rd_data           (ddr3_rdata     ),
-        .ddr3_rd_valid          (ddr3_rd_valid  )
+
+    ddr_ctrl_top 
+    #(
+        .DATA_WD         (DATA_WD         ),
+        .MAX_ADDR        (DRAM_MAX_ADDR   ),
+        .DQ_WIDTH        (DQ_WIDTH        ),
+        .DDR_ADDR_WIDTH  (DDR_ADDR_WIDTH  ),
+        .AXI_ADDR_WIDTH  (AXI_ADDR_WIDTH  ),
+        .AXI_BURST_WIDTH (AXI_BURST_WIDTH ),
+        .AXI_ID_WIDTH    (AXI_ID_WIDTH    ),
+        .AXI_DATA_WIDTH  (AXI_DATA_WIDTH  )
+    )
+    u_ddr_ctrl_top(
+    	.rst_n       (rst_n         ),
+        .wr_clk      (ddr3_wr_clk   ),
+        .wr_en       (vfb_de_in     ),
+        .wr_data     (vfb_data_in   ),
+        .wr_load     (vfb_vs        ),
+        .rd_clk      (~ulpi_clk     ),
+        .rd_en       (syn_off0_re   ),
+        .rd_load     (~syn_off0_vs  ),
+        .rd_data     (vfb_data_out  ),
+        .rd_valid    (vfb_rd_valid  ),
+
+        .aclk        (aclk          ),
+        .aresetn     (aresetn       ),
+        .ddr_awaddr  (ddr_awaddr    ),
+        .ddr_awid    (ddr_awid      ),
+        .ddr_awlen   (ddr_awlen     ),
+        .ddr_awvalid (ddr_awvalid   ),
+        .ddr_awready (ddr_awready   ),
+        .ddr_wdata   (ddr_wdata     ),
+        .ddr_wstrb   (ddr_wstrb     ),
+        .ddr_wlast   (ddr_wlast     ),
+        .ddr_wvalid  (ddr_wvalid    ),
+        .ddr_wready  (ddr_wready    ),
+        .ddr_bid     (ddr_bid       ),
+        .ddr_bresp   (ddr_bresp     ),
+        .ddr_bvalid  (ddr_bvalid    ),
+        .ddr_bready  (ddr_bready    ),
+        .ddr_arid    (ddr_arid      ),
+        .ddr_araddr  (ddr_araddr    ),
+        .ddr_arlen   (ddr_arlen     ),
+        .ddr_arvalid (ddr_arvalid   ),
+        .ddr_arready (ddr_arready   ),
+        .ddr_rid     (ddr_rid       ),
+        .ddr_rdata   (ddr_rdata     ),
+        .ddr_rresp   (ddr_rresp     ),
+        .ddr_rvalid  (ddr_rvalid    ),
+        .ddr_rready  (ddr_rready    ),
+        .ddr_rlast   (ddr_rlast     )
     );
+    
 
     wire  [1:0]   read_mode_ulpi_clk;
 
@@ -342,9 +410,10 @@ module rmii_bmp_uvc(
 //==============================================================================
 //usb TX(uvc) 
     assign yuv_data = {off0_syn_data, 8'h80, 8'h80};//{y,u,v}
+    assign uvc_rstn = sys_rst_n;
 
     uvc_top u_uvc_top(
-    .RESET_N        (sys_rst_n ),
+    .RESET_N        (uvc_rstn  ),
     .ulpi_rst       (ulpi_rst  ),
     .ulpi_clk       (ulpi_clk  ),
     .ulpi_dir       (ulpi_dir  ),

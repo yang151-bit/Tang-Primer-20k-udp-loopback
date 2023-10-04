@@ -129,24 +129,16 @@ module ddr3_controller #(
     always @(posedge clk_ref) begin
         if (ddr3_wr_load) 
             ddr3_wr_addr <= 0;
-        else if(WR_DONE)
-            ddr3_wr_addr <= 0;
         else if(DATA_W_END)
-            ddr3_wr_addr <= ddr3_wr_addr + 128;
-        else
-            ddr3_wr_addr <= ddr3_wr_addr;
+            ddr3_wr_addr <= ddr3_wr_addr + BURST_LEN*2;
     end
 
 //psram读地址产生模块
     always @(posedge clk_ref or negedge rst_n) begin
         if(!rst_n  || ddr3_rd_load)
             ddr3_rd_addr <= 0;
-        else if(RD_DONE && DATA_R_END)
-            ddr3_rd_addr <= 0;
         else if(DATA_R_END)
             ddr3_rd_addr <= ddr3_rd_addr + BURST_LEN;
-        else
-            ddr3_rd_addr <= ddr3_rd_addr;
     end
 
 //=====BURST WRITE =====
@@ -173,7 +165,7 @@ module ddr3_controller #(
 
     always@(posedge clk_ref)
       if(WR_CYC_CNT == ADDR_RANGE/2)
-          WR_DONE <= 1'b1;
+          WR_DONE <= 1;
       else
           WR_DONE <= 0;
 

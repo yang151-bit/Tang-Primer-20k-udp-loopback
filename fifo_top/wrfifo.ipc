@@ -28,4 +28,4 @@ Read_Write_Check_on_RAM=false
 SIZE_W=16
 STANDARD_FIFO=true
 Synthesis_tool=GowinSynthesis
-ALEMPTY_SET=15
+ALEMPTY_SET=7

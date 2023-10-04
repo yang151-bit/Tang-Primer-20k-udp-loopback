@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="rdfifo" Register="176" Alu="8" Lut="136" Ssram="32"/>
+<Module name="rdfifo" Register="176" Alu="9" Lut="132" Ssram="32"/>

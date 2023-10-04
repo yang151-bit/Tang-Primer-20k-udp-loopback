@@ -1,0 +1,151 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="aclk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="rmii_bmp_uvc" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Bus name="u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/axi_state_reg[0:0]">
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/axi_state_reg[0]</Signal>
+            </Bus>
+            <Bus name="u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[17:6]">
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[17]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[16]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[15]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[14]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[13]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[12]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[11]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[10]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[9]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[8]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[7]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[6]</Signal>
+            </Bus>
+            <Bus name="u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[17:6]">
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[17]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[16]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[15]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[14]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[13]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[12]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[11]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[10]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[9]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[8]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[7]</Signal>
+                <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/addr_reg[6]</Signal>
+            </Bus>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/rlast</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/rvalid</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/if_wr_req</Signal>
+            <Signal>u_ddr_ctrl_top/rfifo_last</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/arvalid</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/arready</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/if_ready</Signal>
+            <Signal>u_axi_ddr3/arvalid</Signal>
+            <Signal>u_axi_ddr3/arready</Signal>
+            <Signal>u_axi_ddr3/rvalid</Signal>
+            <Signal>u_axi_ddr3/rready</Signal>
+            <Bus name="u_axi_ddr3/burst_read_counter[5:0]">
+                <Signal>u_axi_ddr3/burst_read_counter[5]</Signal>
+                <Signal>u_axi_ddr3/burst_read_counter[4]</Signal>
+                <Signal>u_axi_ddr3/burst_read_counter[3]</Signal>
+                <Signal>u_axi_ddr3/burst_read_counter[2]</Signal>
+                <Signal>u_axi_ddr3/burst_read_counter[1]</Signal>
+                <Signal>u_axi_ddr3/burst_read_counter[0]</Signal>
+            </Bus>
+            <Signal>u_axi_ddr3/ddr_cmd_en</Signal>
+            <Signal>u_axi_ddr3/ddr_idle</Signal>
+            <Signal>u_axi_ddr3/ddr_exec_wr</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_wr_if_wfifo/if_rd_req</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_wr_if_wfifo/awvalid</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_wr_if_wfifo/awready</Signal>
+            <Signal>u_ddr_ctrl_top/u_axi_dma_wr_if_wfifo/if_ready</Signal>
+            <Signal>u_axi_ddr3/wready</Signal>
+            <Signal>u_axi_ddr3/wvalid</Signal>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Bus restorename="u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[17:6]">
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[17]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[16]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[15]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[14]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[13]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[12]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[11]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[10]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[9]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[8]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[7]</Signal>
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/len_reg[6]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1">
+                <SignalList>
+                    <Bus restorename="u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/axi_state_reg[0:0]">
+                        <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/axi_state_reg[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="2">
+                <SignalList>
+                    <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/arvalid</Signal>
+                    <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/arready</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="3">
+                <SignalList>
+                    <Bus restorename="u_axi_ddr3/burst_read_counter[5:0]">
+                        <Signal>u_axi_ddr3/burst_read_counter[5]</Signal>
+                        <Signal>u_axi_ddr3/burst_read_counter[4]</Signal>
+                        <Signal>u_axi_ddr3/burst_read_counter[3]</Signal>
+                        <Signal>u_axi_ddr3/burst_read_counter[2]</Signal>
+                        <Signal>u_axi_ddr3/burst_read_counter[1]</Signal>
+                        <Signal>u_axi_ddr3/burst_read_counter[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="4">
+                <SignalList>
+                    <Signal>u_ddr_ctrl_top/u_axi_dma_rd_if_rfifo/if_ready</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="000000000001" value1="000000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="1"/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="11" value1="00" trigger="2"/>
+            <MatchUnit index="3" enabled="1" match_type="0" counter_enable="1" counter_width="6" counter="6" countinuous="0" func="1" value0="000111" value1="000000" trigger="3"/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="4"/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M3</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>0100010001001001</GAO_ID>
+</GAO_CONFIG>
