@@ -25,7 +25,8 @@ module ddr_ctrl_top #(
 
     //user read port
     input                               rd_clk,                   
-    input                               rd_en,                    
+    input                               rd_en,        
+    input                               rd_rdy,            
     input                               rd_load,                  
     output  [DATA_WD-1 : 0]             rd_data,                  
     output                              rd_valid,        
@@ -230,9 +231,7 @@ module ddr_ctrl_top #(
         .awlen              (ddr_awlen          ),
         .awvalid            (ddr_awvalid        ),
         .awready            (ddr_awready        ),
-        .wid                (ddr_wid            ),
         .wdata              (ddr_wdata          ),
-        .wresp              (ddr_wresp          ),
         .wvalid             (ddr_wvalid         ),
         .wready             (ddr_wready         ),
         .wstrb              (ddr_wstrb          ),
@@ -283,6 +282,7 @@ module ddr_ctrl_top #(
 // Instantiate read port FIFO
     wire rdfifo_almostF;
     wire rdfifo_full;
+    wire rdfifo_empty;
     wire rdfifo_rst;
 
     reg [3:0]rdfifo_rst_r;
@@ -304,12 +304,13 @@ module ddr_ctrl_top #(
 		.RdEn           (rd_en),                        //input RdEn
 		.Almost_Full    (rdfifo_almostF),               //output Almost_Full
 		.Full           (rdfifo_full),                  //output Full
+        .Empty          (rdfifo_empty),                 //output Empty
 		.Q              (rd_data)                       //output [15:0] Q
 	);
 
     assign rdfifo_if_req = ~rdfifo_almostF;
     assign rdfifo_if_ready = ~rdfifo_full;
-
+    assign rd_rdy = rdfifo_ready ? 1 : ~rdfifo_empty; 
 endmodule
 
 

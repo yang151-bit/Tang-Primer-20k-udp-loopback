@@ -30,6 +30,7 @@ module frame
     input              FIFO_AFULL_I,     //
     input              FIFO_EMPTY_I,     //
     input              SOF_I     ,       //
+    input              DATA_READY_I    ,
     input  [23:0]      DATA_I    ,
     output [7:0]       DATA_O    ,       //
     output             DVAL_O    ,       //
@@ -114,6 +115,22 @@ assign DATA_O = dout;
 assign DVAL_O = dval;
 reg pixel_rd_en;
 reg [7:0] moving_pixel;
+
+reg pixel_req_r1, pixel_req_r2;
+wire pixel_val;
+assign pixel_val = pixel_req_r1 | pixel_req_r2;
+
+always @(posedge CLK_I) begin
+    if(byte_cnt == 16'd11)begin
+        pixel_req_r1 <= 1;
+        pixel_req_r2 <= 0;
+    end
+    else begin
+        pixel_req_r1 <= DATA_READY_I && byte_cnt[0];
+        pixel_req_r2 <= pixel_req_r1;
+    end
+end
+
 always @(posedge CLK_I or posedge RST_I) begin
     if (RST_I) begin
         frame_valid <= 1'b0;
@@ -131,11 +148,16 @@ always @(posedge CLK_I or posedge RST_I) begin
     else begin
         if (frame_valid) begin
             if(FIFO_AFULL_I == 1'b0) begin
-                dval <= 1'b1;
+                if(~pixel_val & pixel_rd_en)
+                    dval <= 1'b0;
+                else
+                    dval <= 1'b1;
                 if (byte_cnt == PAYLOAD_SIZE - 1'b1) begin
                     pixel_rd_en <= 0;
                     byte_cnt <= 16'd0;
                 end
+                else if(~DATA_READY_I & byte_cnt[0] & pixel_rd_en)
+                    byte_cnt <= byte_cnt;
                 else begin
                     byte_cnt <= byte_cnt + 16'd1;
                 end
@@ -299,7 +321,7 @@ always @(posedge CLK_I or posedge RST_I) begin
     end
 end
 
-assign PIXEL_REQ_O = pixel_rd_en && byte_cnt[0] && ~FIFO_AFULL_I;
+assign PIXEL_REQ_O = DATA_READY_I & pixel_rd_en && byte_cnt[0] && ~FIFO_AFULL_I;
 
 //==============================================================
 //======microframe control frame rate

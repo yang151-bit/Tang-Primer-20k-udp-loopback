@@ -64,13 +64,13 @@ module rmii_bmp_uvc(
     );
 
 //parameter define 
-//DRAM读写最大地址 480 * 360 * 2 = 172800
+//DRAM 读写最大地址 480 * 360 = 172800
     localparam  DRAM_MAX_ADDR   = 172800;
     localparam  ADDR_WIDTH      = $clog2(DRAM_MAX_ADDR);
 //USB分包数 360 + 1 = 361
     localparam  USB_PKT_NUM = 361;  
 //DRAM parameters
-    localparam  DQ_WIDTH        = 5'h16;
+    localparam  DQ_WIDTH        = 5'd16;
     localparam  DDR_ADDR_WIDTH  = 27;
     localparam  BANK_WIDTH      = 3;
     localparam  ROW_WIDTH       = 14;
@@ -112,9 +112,11 @@ module rmii_bmp_uvc(
     wire [DATA_WD-1:0]    vfb_data_in    ;
     wire [DATA_WD-1:0]    vfb_data_out   ;
     wire                  vfb_rd_valid   ;
+    wire                  vfb_rdy        ;
 
     //syn_code
     wire                        syn_off0_re;  // ofifo read enable signal
+    wire                        syn_off0_val;
     wire                        syn_off0_vs;
     wire                        syn_off0_hs;
                         
@@ -328,7 +330,7 @@ module rmii_bmp_uvc(
 
     assign ddr_cs = 1'b0;
 
-    assign aresetn = rst_n;
+    assign aresetn = rst_n & ddr3_init_done;
     
 
     ddr_ctrl_top 
@@ -343,7 +345,7 @@ module rmii_bmp_uvc(
         .AXI_DATA_WIDTH  (AXI_DATA_WIDTH  )
     )
     u_ddr_ctrl_top(
-    	.rst_n       (rst_n         ),
+    	.rst_n       (aresetn       ),
         .wr_clk      (ddr3_wr_clk   ),
         .wr_en       (vfb_de_in     ),
         .wr_data     (vfb_data_in   ),
@@ -351,6 +353,7 @@ module rmii_bmp_uvc(
         .rd_clk      (~ulpi_clk     ),
         .rd_en       (syn_off0_re   ),
         .rd_load     (~syn_off0_vs  ),
+        .rd_rdy      (vfb_rdy       ),
         .rd_data     (vfb_data_out  ),
         .rd_valid    (vfb_rd_valid  ),
 
@@ -411,7 +414,7 @@ module rmii_bmp_uvc(
 //usb TX(uvc) 
     assign yuv_data = {off0_syn_data, 8'h80, 8'h80};//{y,u,v}
     assign uvc_rstn = sys_rst_n;
-
+    
     uvc_top u_uvc_top(
     .RESET_N        (uvc_rstn  ),
     .ulpi_rst       (ulpi_rst  ),
@@ -421,6 +424,7 @@ module rmii_bmp_uvc(
     .ulpi_stp       (ulpi_stp  ),
     .ulpi_data      (ulpi_data ),
 
+    .vfb_rdy        (vfb_rdy    ),
     .vfb_data_in    (yuv_data   ),
     .vfb_re         (syn_off0_re),
     .vfb_vs         (syn_off0_vs)

@@ -35,7 +35,7 @@ module uvc_top(
     input         ulpi_nxt,
     output        ulpi_stp,
     inout [7:0]   ulpi_data,
-
+    input         vfb_rdy,
     input [23:0]  vfb_data_in,
     output        vfb_re,
     output        vfb_vs
@@ -146,6 +146,7 @@ frame u_frame
     ,.FIFO_AFULL_I(fifo_afull   )      //
     ,.FIFO_EMPTY_I(fifo_empty   )      //
     ,.SOF_I       (usb_sof      )      //
+    ,.DATA_READY_I(vfb_rdy      )
     ,.DATA_O      (frame_data   )      //
     ,.DVAL_O      (frame_dval   )      //
     ,.VS_O        (vfb_vs       )

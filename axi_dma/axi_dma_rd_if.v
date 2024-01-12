@@ -119,7 +119,7 @@ module axi_dma_rd_if #(
     assign rready = if_ready & if_wr_ready;
 
     assign if_wr_data = rdata;
-    assign if_wr_push = if_ready & rvalid;
+    assign if_wr_push = rready & rvalid && rid == AXI_ID;
 
     assign st_last = axi_state_reg == AXI_STATE_START && len_reg == 1 && rlast && rid == AXI_ID;  
 

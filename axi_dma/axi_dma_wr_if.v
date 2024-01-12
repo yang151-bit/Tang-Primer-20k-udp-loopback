@@ -39,9 +39,7 @@ module axi_dma_wr_if #(
     output  [AXI_BURST_WIDTH-1 : 0]     awlen,
     output                              awvalid,
     input                               awready,
-    output  [AXI_ID_WIDTH - 1 : 0]      wid,
     output  [AXI_DATA_WIDTH - 1 : 0]    wdata,
-    output  [1 : 0]                     wresp,
     output  [AXI_STRB_WIDTH - 1 : 0]    wstrb,
     output                              wvalid,
     input                               wready,
@@ -57,6 +55,7 @@ module axi_dma_wr_if #(
      */
     input   [ADDR_WIDTH - 1 : 0]        cfg_desc_addr,
     input   [LEN_WIDTH - 1 : 0]         cfg_desc_len,
+    input   [AXI_STRB_WIDTH - 1 : 0]    cfg_desc_strb,
     input                               cfg_valid,
     output                              cfg_ready,
 
@@ -78,6 +77,8 @@ module axi_dma_wr_if #(
     
     reg [SUB_WIDTH-1 :SSUB_WIDTH] addr_reg, addr_next;
     reg [LEN_WIDTH-1 :SSUB_WIDTH] len_reg, len_next;
+    reg [AXI_STRB_WIDTH - 1 : 0] desc_strb, desc_strb_next;
+    
     reg if_ready, if_ready_next;
 
     assign cfg_ready = axi_state_reg == AXI_STATE_IDLE;
@@ -87,6 +88,7 @@ module axi_dma_wr_if #(
         addr_next = addr_reg;
         len_next = len_reg;
         if_ready_next = if_ready;
+        desc_strb_next = desc_strb;
 
         case(axi_state_reg)
             AXI_STATE_IDLE:begin
@@ -94,6 +96,7 @@ module axi_dma_wr_if #(
                     addr_next = cfg_desc_addr[SUB_WIDTH-1 :SSUB_WIDTH];
                     len_next = cfg_desc_len[LEN_WIDTH-1 :SSUB_WIDTH];
                     axi_state_next = AXI_STATE_START;
+                    desc_strb_next = cfg_desc_strb;
                 end
             end
             AXI_STATE_START:begin
@@ -106,7 +109,7 @@ module axi_dma_wr_if #(
                     if_ready_next = 0;
 
                 if(len_reg != 1)begin
-                    if(bvalid & bready)begin
+                    if(wlast & bid == AXI_ID)begin
                         addr_next = addr_reg + 1;
                         len_next = len_reg - 1;
                     end
@@ -125,11 +128,11 @@ module axi_dma_wr_if #(
     assign bready = 1;
     assign wvalid = if_ready;
     assign wdata = if_rd_data;
-    assign wstrb = {(AXI_STRB_WIDTH){1'b0}};
+    assign wstrb = desc_strb;
 
     assign if_rd_pop = wvalid & wready && bid == AXI_ID;
 
-    assign st_last = axi_state_reg == AXI_STATE_START && len_reg == 1 && wlast;  
+    assign st_last = axi_state_reg == AXI_STATE_START && len_reg == 1 && wlast && bid == AXI_ID;  
 
     reg [$clog2(BURST_LEN)-1:0] burst_write_counter;
     
@@ -146,10 +149,12 @@ module axi_dma_wr_if #(
         addr_reg <= addr_next;
         len_reg <= len_next;
         if_ready <= if_ready_next;
+        desc_strb <= desc_strb_next;
 
         if (~aresetn) begin
             if_ready <= 0;
             axi_state_reg <= AXI_STATE_IDLE;
+            desc_strb <= 0;
         end
     end
 

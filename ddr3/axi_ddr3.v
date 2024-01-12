@@ -277,25 +277,37 @@ module axi_ddr3 #(
     
     reg rvalid_reg;
     reg pre_rvalid;
+    reg rd_last;
 
-    always @(posedge aclk)
-        if (rvalid_reg & ~rready)
-            pre_rvalid <= 1;
+    always @(posedge aclk or negedge aresetn)
+        if (~aresetn)
+            pre_rvalid <= 0;
         else if(rvalid & rready)
             pre_rvalid <= 0;
+        else if(rvalid_reg & ~rready)
+            pre_rvalid <= 1;
+        
 
     always @(posedge aclk)
-        rvalid_reg <= ~rdata_fifo_empty & rready & ~rlast;
+        rvalid_reg <= ~rdata_fifo_empty & rready;
 
     assign rresp = AXI_RESP_OKAY;
     assign rvalid = rvalid_reg | pre_rvalid;
-    assign rlast = burst_read_counter == rlen & rvalid & rready;
+    assign rlast = rd_last & rvalid & rready;
 
     always @(posedge aclk)
         if (rtag_fifo_pop)
             burst_read_counter <= 0;
         else if(rvalid & rready)
             burst_read_counter <= burst_read_counter +1;
+    
+    always @(posedge aclk or negedge aresetn)
+        if (~aresetn)
+            rd_last <= 0;
+        else if (rtag_fifo_pop | rlast)
+            rd_last <= 0;
+        else if(burst_read_counter == rlen-1 & rvalid & rready)
+            rd_last <= 1;
 
 /*
 * DDR Write Channel
@@ -324,7 +336,7 @@ module axi_ddr3 #(
 
     assign rdata_fifo_idata = ddr_rdata;
     assign rdata_fifo_push = ddr_rd_valid & ddr_init_done;
-    assign rdata_fifo_pop = ~rdata_fifo_empty & rready & ~rlast;
+    assign rdata_fifo_pop = ~rdata_fifo_empty & rready;
     assign rdata = rdata_fifo_odata;
 
     sfifo 
@@ -334,7 +346,7 @@ module axi_ddr3 #(
     )
     u_sfifo_rdata(
     	.clk        (aclk               ),
-        .rstn       (aresetn            ),
+        .rstn       (rtag_fifo_init_flag   ),
         .wr_en      (rdata_fifo_push    ),
         .rd_en      (rdata_fifo_pop     ),
         .wr_data    (rdata_fifo_idata   ),
