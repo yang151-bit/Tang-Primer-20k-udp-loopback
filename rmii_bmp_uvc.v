@@ -413,23 +413,22 @@ module rmii_bmp_uvc(
 //==============================================================================
 //usb TX(uvc) 
     assign yuv_data = {off0_syn_data, 8'h80, 8'h80};//{y,u,v}
-    assign uvc_rstn = sys_rst_n;
-    
+    assign uvc_rstn = rst_n & sys_init_done  ;
+
     uvc_top u_uvc_top(
-    .RESET_N        (uvc_rstn  ),
-    .ulpi_rst       (ulpi_rst  ),
-    .ulpi_clk       (ulpi_clk  ),
-    .ulpi_dir       (ulpi_dir  ),
-    .ulpi_nxt       (ulpi_nxt  ),
-    .ulpi_stp       (ulpi_stp  ),
-    .ulpi_data      (ulpi_data ),
-
-    .vfb_rdy        (vfb_rdy    ),
-    .vfb_data_in    (yuv_data   ),
-    .vfb_re         (syn_off0_re),
-    .vfb_vs         (syn_off0_vs)
+    	.rst_n        (uvc_rstn     ),
+        .ulpi_reset_o (ulpi_rst     ),
+        .ulpi_data_io (ulpi_data    ),
+        .ulpi_stp_o   (ulpi_stp     ),
+        .ulpi_nxt_i   (ulpi_nxt     ),
+        .ulpi_dir_i   (ulpi_dir     ),
+        .ulpi_clk60_i (ulpi_clk     ),
+        .vfb_data_in  (yuv_data     ),
+        .vfb_rdy      (vfb_rdy      ),
+        .vfb_re       (vfb_re       ),
+        .vfb_vs       (syn_off0_vs  )
     );
-
-
+    
+    assign syn_off0_re = vfb_re;
 
 endmodule

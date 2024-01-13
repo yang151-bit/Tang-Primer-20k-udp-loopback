@@ -1,0 +1,96 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="u_uvc_top/usb_clk_w" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="rmii_bmp_uvc" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/frame_valid</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/FIFO_EMPTY_I</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/FIFO_AFULL_I</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/sof_rise</Signal>
+            <Bus name="u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[31:0]">
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[31]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[30]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[29]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[28]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[27]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[26]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[25]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[24]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[23]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[22]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[21]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[20]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[19]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[18]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[17]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[16]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[15]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[14]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[13]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[12]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[11]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[10]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[9]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[8]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[7]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[6]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[5]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[4]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[3]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[2]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[1]</Signal>
+                <Signal>u_uvc_top/u_usb_uvc_top/u_frame/expectPixels[0]</Signal>
+            </Bus>
+            <Signal>u_ddr_ctrl_top/rdfifo_empty</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/PIXEL_REQ_O</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/u_frame/pkt_end</Signal>
+            <Signal>u_uvc_top/u_usb_uvc_top/usb_txact</Signal>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>u_uvc_top/u_usb_uvc_top/u_frame/FIFO_EMPTY_I</Signal>
+                    <Signal>u_uvc_top/u_usb_uvc_top/u_frame/frame_valid</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1"/>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="RX" value1="00" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="01110001" value1="00000000" trigger="1"/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1101110010110010</GAO_ID>
+</GAO_CONFIG>

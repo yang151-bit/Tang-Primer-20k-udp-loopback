@@ -167,7 +167,7 @@ module ddr_ctrl_top #(
         .BANK_WIDTH         (BANK_WIDTH         ),
         .LEN_WIDTH          (LEN_WIDTH          ),
         .SEC_WIDTH          (2                  ),
-        .BURST_LEN          (16                 )
+        .BURST_LEN          (8                  )
     )
     u_axi_dma_rd_if_rfifo(
     	.aclk               (aclk               ),

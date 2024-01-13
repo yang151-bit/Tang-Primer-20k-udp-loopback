@@ -2,7 +2,7 @@
 //All rights reserved.
 //File Title: Post-PnR Simulation Model file
 //GOWIN Version: V1.9.9 Beta
-//Created Time: Tue Oct 03 21:45:13 2023
+//Created Time: Sun Oct 08 22:42:48 2023
 
 `timescale 100 ps/100 ps
 module rdfifo(

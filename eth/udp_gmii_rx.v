@@ -27,7 +27,7 @@ module udp_gmii_rx (
 );
 
 	parameter		BOARD_MAC_ADDR			= 48'h00_11_22_33_44_55;
-	parameter		BOARD_IP_ADDR			= 32'hA9_FE_01_17;				// 169.254.1.23
+	parameter		BOARD_IP_ADDR			= 32'hC0_A8_1F_17;				// 192.168.31.23
 	
 	localparam		IDLE					= 18'h0_0001,
 					SFD						= 18'h0_0002,

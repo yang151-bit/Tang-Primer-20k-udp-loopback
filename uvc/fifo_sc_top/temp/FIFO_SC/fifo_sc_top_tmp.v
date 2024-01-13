@@ -5,7 +5,7 @@
 //Part Number: GW2A-LV18PG256C8/I7
 //Device: GW2A-18
 //Device Version: C
-//Created Time: Thu Jul 20 15:52:56 2023
+//Created Time: Fri Jan 12 21:39:43 2024
 
 //Change the instance name and port connections to the signal names
 //--------Copy here to design--------
@@ -16,7 +16,7 @@
 		.WrEn(WrEn_i), //input WrEn
 		.RdEn(RdEn_i), //input RdEn
 		.Reset(Reset_i), //input Reset
-		.Wnum(Wnum_o), //output [12:0] Wnum
+		.Wnum(Wnum_o), //output [11:0] Wnum
 		.Almost_Empty(Almost_Empty_o), //output Almost_Empty
 		.Almost_Full(Almost_Full_o), //output Almost_Full
 		.Q(Q_o), //output [7:0] Q

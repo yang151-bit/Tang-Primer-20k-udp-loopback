@@ -1,71 +1,132 @@
 {
+ "Device" : "GW2A-18C",
  "Files" : [
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3_memory_interface/ddr3_memory_interface.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/axi_afifo/axi_dma_rd_if.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/gowin_rpll/gowin_rpll.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/axi_afifo/axi_dma_wr_if.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/rdfifo.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/axi_ddr3.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/fifo_top/wrfifo.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/ddr3_controller.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth_rmii_read_photo.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/ddr3_ctrl_top.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/rmii_bmp_hdmi.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/ddr3_fifo_ctrl.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/CRC32_D8.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/ddr_ctrl_top.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/eth_arp_gmii.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3/sfifo.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/eth_rmii.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/ddr3_memory_interface/ddr3_memory_interface.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/mdio_config.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/CRC32_D8.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/mdio_master.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/eth_arp_gmii.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/rmii2gmii.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/eth_rmii.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/udp_gmii_rx.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/mdio_config.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/eth/udp_gmii_tx.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/mdio_master.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3/ddr3_controller.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/rmii2gmii.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3/ddr3_ctrl_top.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/udp_gmii_rx.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/ddr3/ddr3_fifo_ctrl.v",
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth/udp_gmii_tx.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/eth_rmii_read_photo.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/fifo.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/fifo_sc_top/fifo_sc_top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/fifo_top/rdfifo.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/fifo_top/wrfifo.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/gowin_rpll/TMDS_PLL.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/gowin_rpll/gowin_rpll.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/key_debounce/key_debounce.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/rmii_bmp_uvc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/syn_code/syn_gen.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/usb_device_controller/usb_device_controller.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/uvc/frame.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/uvc/ulpi_wrapper.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/uvc/usb_descriptor_video.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/uvc/uvc_top.v",
    "Type" : "verilog"
   }
  ],
@@ -73,8 +134,8 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_hdmi/src/impl/temp/rtl_parser.result",
- "Top" : "",
- "VerilogStd" : "verilog_2001",
+ "ResultFile" : "D:/workshop/Tang-Primer-20K/rmii/rmii_bmp_noarp_uvc/src/impl/temp/rtl_parser.result",
+ "Top" : "rmii_bmp_uvc",
+ "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"
 }

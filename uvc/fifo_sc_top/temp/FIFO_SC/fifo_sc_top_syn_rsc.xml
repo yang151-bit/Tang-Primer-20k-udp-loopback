@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="fifo_sc_top" Register="40" Alu="24" Lut="52" Bsram="1"/>
